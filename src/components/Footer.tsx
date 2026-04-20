@@ -1,8 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import Instagram from "lucide-react/dist/esm/icons/instagram.js";
-import Mail from "lucide-react/dist/esm/icons/mail.js";
-import MapPin from "lucide-react/dist/esm/icons/map-pin.js";
-import Phone from "lucide-react/dist/esm/icons/phone.js";
+import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 
 const LOGO = "https://files.catbox.moe/5j42wr.webp";
 
