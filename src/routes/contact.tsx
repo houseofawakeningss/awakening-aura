@@ -1,7 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Instagram, MessageCircle, MapPin, ArrowRight, Mail, Phone } from "lucide-react";
+import Instagram from "lucide-react/dist/esm/icons/instagram.js";
+import MessageCircle from "lucide-react/dist/esm/icons/message-circle.js";
+import MapPin from "lucide-react/dist/esm/icons/map-pin.js";
+import ArrowRight from "lucide-react/dist/esm/icons/arrow-right.js";
+import Mail from "lucide-react/dist/esm/icons/mail.js";
+import Phone from "lucide-react/dist/esm/icons/phone.js";
 
 const WA_PREFILL = "https://wa.me/919113216212?text=Hi%20House%20of%20Awakenings%2C%20I%27d%20like%20to%20begin%20my%20healing%20journey.%20Please%20share%20more%20details.";
 
