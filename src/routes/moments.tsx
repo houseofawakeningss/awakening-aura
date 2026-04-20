@@ -32,31 +32,31 @@ function MomentsPage() {
 
   return (
     <>
-      <section className="px-6 pt-36 pb-12 md:pt-44 text-center">
-        <div className="eyebrow mb-4">Moments</div>
-        <h1 className="font-display text-4xl md:text-6xl">Glimpses from inside.</h1>
-        <p className="mx-auto mt-6 max-w-2xl opacity-75">
-          A quiet album of practices, retreats, and the small sacred moments in between.
+      <section className="px-5 pt-28 pb-8 md:pt-44 text-center">
+        <div className="eyebrow mb-3">Moments</div>
+        <h1 className="font-display text-[28px] sm:text-4xl md:text-6xl">Glimpses from inside.</h1>
+        <p className="mx-auto mt-4 max-w-2xl text-sm md:text-base opacity-75">
+          A quiet album of practices, retreats, and small sacred moments.
         </p>
       </section>
 
-      <section className="px-6 py-12">
+      <section className="px-4 md:px-6 py-8 md:py-12">
         <div className="mx-auto max-w-7xl masonry">
           {IMAGES.map((src, i) => (
             <motion.button
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: (i % 6) * 0.05 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.5, delay: (i % 4) * 0.04 }}
               onClick={() => setActive(src)}
-              className="block w-full overflow-hidden rounded-2xl group"
+              className="block w-full overflow-hidden rounded-xl md:rounded-2xl group"
             >
               <img
                 src={src}
                 alt={`Moment ${i + 1}`}
                 loading="lazy"
-                className="w-full transition-transform duration-[1200ms] group-hover:scale-[1.04]"
+                className="w-full transition-transform duration-700 group-hover:scale-[1.04]"
               />
             </motion.button>
           ))}
@@ -93,9 +93,9 @@ function MomentsPage() {
         )}
       </AnimatePresence>
 
-      <section className="px-6 py-24 text-center">
+      <section className="px-5 py-16 md:py-24 text-center">
         <Link to="/contact" className="btn-primary">
-          Join the Journey <ArrowRight size={18} />
+          Join the Journey <ArrowRight size={16} />
         </Link>
       </section>
     </>

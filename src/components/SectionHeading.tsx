@@ -12,10 +12,10 @@ export default function SectionHeading({
       transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
       className={`max-w-3xl ${center ? "mx-auto text-center" : ""}`}
     >
-      {eyebrow && <div className="eyebrow mb-4">{eyebrow}</div>}
-      <h2 className="font-display text-3xl md:text-5xl leading-[1.1]">{title}</h2>
+      {eyebrow && <div className="eyebrow mb-3">{eyebrow}</div>}
+      <h2 className="font-display text-[26px] sm:text-3xl md:text-5xl leading-[1.15]">{title}</h2>
       {subtitle && (
-        <p className="mt-5 text-base md:text-lg leading-relaxed opacity-75">{subtitle}</p>
+        <p className="mt-4 text-sm md:text-lg leading-relaxed opacity-75">{subtitle}</p>
       )}
     </motion.div>
   );

@@ -29,68 +29,77 @@ export default function Navbar() {
 
   useEffect(() => { setOpen(false); }, [location.pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "backdrop-blur-xl bg-background/70 border-b border-border/40"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
-        <Link to="/" className="flex items-center gap-3">
-          <span className="block h-11 w-11 overflow-hidden rounded-full ring-1 ring-foreground/10">
-            <img src={LOGO} alt="House of Awakenings" className="h-full w-full object-cover" />
-          </span>
-          <span className="hidden font-display text-lg leading-tight tracking-tight md:flex md:flex-col">
-            <span>House of Awakenings</span>
-            <span className="text-[10px] font-sans uppercase tracking-[0.3em] opacity-60">Bangalore</span>
-          </span>
-        </Link>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled || open
+            ? "backdrop-blur-xl bg-background/80 border-b border-border/40"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8 md:py-4">
+          <Link to="/" className="flex items-center gap-2.5 relative z-[60]">
+            <span className="block h-9 w-9 md:h-11 md:w-11 overflow-hidden rounded-full ring-1 ring-foreground/10">
+              <img src={LOGO} alt="House of Awakenings" className="h-full w-full object-cover" />
+            </span>
+            <span className="hidden font-display text-base md:text-lg leading-tight tracking-tight md:flex md:flex-col">
+              <span>House of Awakenings</span>
+              <span className="text-[10px] font-sans uppercase tracking-[0.3em] opacity-60">Bangalore</span>
+            </span>
+          </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className="relative text-sm tracking-wide opacity-80 transition hover:opacity-100"
-              activeProps={{ className: "opacity-100 font-medium" }}
-              activeOptions={{ exact: l.to === "/" }}
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
+          <nav className="hidden lg:flex items-center gap-8">
+            {links.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="relative text-sm tracking-wide opacity-80 transition hover:opacity-100"
+                activeProps={{ className: "opacity-100 font-medium" }}
+                activeOptions={{ exact: l.to === "/" }}
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
 
-        <button
-          className="lg:hidden p-2 -mr-2"
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+          <button
+            className="lg:hidden p-2 -mr-2 relative z-[60]"
+            onClick={() => setOpen((o) => !o)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </header>
 
+      {/* Full-screen slide-in mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden border-t border-border/40 bg-background/95 backdrop-blur-xl"
+            key="mobile-menu"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+            className="fixed inset-0 z-[55] lg:hidden bg-background/95 backdrop-blur-2xl"
           >
-            <nav className="flex flex-col px-6 py-6 gap-1">
+            <nav className="flex h-full flex-col justify-center px-8 gap-1 pt-16">
               {links.map((l, i) => (
                 <motion.div
                   key={l.to}
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.04 }}
+                  transition={{ delay: 0.15 + i * 0.05, duration: 0.3 }}
                 >
                   <Link
                     to={l.to}
-                    className="block py-3 text-lg font-display border-b border-border/30"
+                    className="block py-3 font-display text-2xl border-b border-border/30"
                     activeProps={{ className: "text-primary" }}
                     activeOptions={{ exact: l.to === "/" }}
                   >
@@ -102,6 +111,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
