@@ -32,91 +32,90 @@ const WHY = [
 function AboutPage() {
   return (
     <>
-      <section className="px-6 pt-36 pb-12 md:pt-44 text-center">
-        <div className="eyebrow mb-4">About</div>
-        <h1 className="font-display text-4xl md:text-6xl">Gunja Tolani</h1>
-        <p className="mt-3 opacity-70 italic">Founder · House of Awakenings</p>
+      <section className="px-5 pt-28 pb-8 md:pt-44 text-center">
+        <div className="eyebrow mb-3">About</div>
+        <h1 className="font-display text-[28px] sm:text-4xl md:text-6xl">Gunja Tolani</h1>
+        <p className="mt-2 text-sm opacity-70 italic">Founder · House of Awakenings</p>
       </section>
 
-      <section className="px-6 py-12 md:py-20">
-        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1fr_1.4fr] items-start">
+      <section className="px-5 py-8 md:py-20">
+        <div className="mx-auto grid max-w-6xl gap-8 md:gap-12 grid-cols-1 md:grid-cols-[1fr_1.4fr] items-start">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
-            className="md:sticky md:top-28"
+            transition={{ duration: 0.7 }}
+            className="md:sticky md:top-28 max-w-sm mx-auto md:max-w-none"
           >
-            <div className="overflow-hidden rounded-3xl">
-              <img src={FOUNDER} alt="Gunja Tolani" className="w-full object-cover" />
+            <div className="overflow-hidden rounded-2xl md:rounded-3xl">
+              <img src={FOUNDER} alt="Gunja Tolani" className="w-full object-cover" loading="lazy" />
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.1 }}
-            className="space-y-5 text-base md:text-[17px] leading-[1.8] opacity-90 font-sans"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="space-y-4 text-[14px] md:text-[17px] leading-[1.7] md:leading-[1.8] opacity-90 font-sans"
           >
             <p>Gunja Tolani is the founder of House of Awakenings—a space born not just from knowledge, but from lived transformation.</p>
-            <p>With a background in Mechanical Engineering and an MBA in Operations and Finance from IIM Calcutta, Gunja began her journey in the corporate world, building a decade-long career with globally respected organizations such as Cummins, Whirlpool, and Gap. Her years in these high-performance environments shaped her discipline, perspective, and understanding of modern-day stress, ambition, and imbalance.</p>
-            <p>Yet, beneath professional success, there was a deeper calling.</p>
-            <p>What began as a personal exploration to address physical fatigue, mental overwhelm, and emotional disconnect gradually unfolded into a profound inner journey. Through consistent practice and self-inquiry, Gunja experienced a complete shift—not just in her health, but in how she related to herself and life.</p>
-            <p className="font-display text-xl italic text-primary">This transformation became the turning point.</p>
-            <p>Choosing to step away from a conventional career path, she immersed herself fully in the world of holistic wellness. Over the years, she has undergone extensive training across multiple disciplines, including advanced yoga studies (TTC, PGD in Yoga Therapy), and certifications in modalities such as breath-led practices, cold immersion therapy, sound healing, and EFT. Each learning has not just been acquired, but embodied—deepening her ability to hold space with authenticity and depth.</p>
-            <p>House of Awakenings is a reflection of this journey.</p>
-            <p>It is not built on trends or surface-level wellness, but on the understanding that true change happens when the body, mind, and energy are addressed together. Through thoughtfully curated experiences, Gunja now guides individuals, communities, and organizations to move beyond burnout and disconnection—toward resilience, clarity, and conscious living.</p>
-            <p className="font-display text-xl italic">Her work is simple yet powerful: to help you pause, reconnect, and awaken to your truest self.</p>
+            <p>With a background in Mechanical Engineering and an MBA from IIM Calcutta, Gunja built a decade-long career with global organizations like Cummins, Whirlpool, and Gap — shaping her understanding of modern stress and imbalance.</p>
+            <p>Yet beneath professional success, there was a deeper calling.</p>
+            <p>What began as a personal exploration to address fatigue and emotional disconnect unfolded into a profound inner journey — a complete shift in how she related to herself and life.</p>
+            <p className="font-display text-lg md:text-xl italic text-primary">This transformation became the turning point.</p>
+            <p>She stepped away from the corporate path and immersed herself in holistic wellness — training in advanced yoga (TTC, PGD in Yoga Therapy), breathwork, cold immersion, sound healing, and EFT. Each modality not just learned, but embodied.</p>
+            <p>House of Awakenings is a reflection of this journey — built on the understanding that true change happens when body, mind, and energy are addressed together.</p>
+            <p className="font-display text-lg md:text-xl italic">Her work is simple yet powerful: to help you pause, reconnect, and awaken to your truest self.</p>
           </motion.div>
         </div>
       </section>
 
       {/* VISION & MISSION */}
-      <section className="px-6 py-24 md:py-32 bg-[color-mix(in_oklab,var(--cream)_60%,transparent)]">
-        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
+      <section className="px-5 py-16 md:py-32 bg-[color-mix(in_oklab,var(--cream)_60%,transparent)]">
+        <div className="mx-auto grid max-w-6xl gap-5 md:gap-8 grid-cols-1 md:grid-cols-2">
           {[
-            { label: "Vision", text: "To build a conscious ecosystem where individuals awaken to their true selves, communities grow in shared awareness, and workplaces evolve into spaces of balance, purpose, and growth." },
-            { label: "Mission", text: "From personal wellbeing to collective culture, our mission is to integrate inner awareness into everyday life—supporting individuals, empowering communities, and helping organizations build healthier, more conscious environments." },
+            { label: "Vision", text: "A conscious ecosystem where individuals awaken, communities grow in shared awareness, and workplaces evolve into spaces of balance and purpose." },
+            { label: "Mission", text: "To integrate inner awareness into everyday life — supporting individuals, empowering communities, and helping organizations build healthier, more conscious environments." },
           ].map((b, i) => (
             <motion.div
               key={b.label}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-              className="rounded-3xl bg-card p-10 border border-border/40"
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="rounded-2xl md:rounded-3xl bg-card p-6 md:p-10 border border-border/40"
             >
               <div className="eyebrow text-primary">{b.label}</div>
-              <p className="mt-5 font-display text-2xl leading-[1.4]">{b.text}</p>
+              <p className="mt-4 font-display text-lg md:text-2xl leading-[1.4]">{b.text}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* WHY US */}
-      <section className="px-6 py-24 md:py-32">
+      <section className="px-5 py-16 md:py-32">
         <SectionHeading eyebrow="Why Choose Us" title="Eight quiet promises." />
-        <div className="mx-auto mt-16 grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-10 md:mt-16 grid max-w-7xl gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {WHY.map(({ icon: Icon, title, text }, i) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: (i % 4) * 0.08 }}
-              className="rounded-2xl border border-border/50 bg-card p-7"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: (i % 4) * 0.06 }}
+              className="rounded-2xl border border-border/50 bg-card p-5 md:p-7"
             >
-              <Icon size={26} strokeWidth={1.5} className="text-primary" />
-              <h3 className="mt-5 font-display text-lg leading-snug">{title}</h3>
-              <p className="mt-3 text-sm opacity-75 leading-relaxed">{text}</p>
+              <Icon size={24} strokeWidth={1.5} className="text-primary" />
+              <h3 className="mt-4 font-display text-base md:text-lg leading-snug">{title}</h3>
+              <p className="mt-2 text-[13px] md:text-sm opacity-75 leading-relaxed">{text}</p>
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-12 md:mt-16 text-center">
           <Link to="/healing-methods" className="btn-primary">
-            Explore Our Healing Methods <ArrowRight size={18} />
+            Explore Healing Methods <ArrowRight size={16} />
           </Link>
         </div>
       </section>
