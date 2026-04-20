@@ -6,7 +6,7 @@ import SectionHeading from "../components/SectionHeading";
 import { METHODS } from "../lib/methods";
 
 const HERO = "https://files.catbox.moe/kixhvl.webp";
-const LOGO = "https://files.catbox.moe/5j42wr.webp";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -69,25 +69,24 @@ function HomePage() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 1.6 }}
+          transition={{ duration: 1, delay: 1.4 }}
           className="relative z-10 mx-auto max-w-4xl px-6 text-center text-white"
         >
-          <img src={LOGO} alt="House of Awakenings" className="mx-auto h-24 w-24 rounded-full object-cover ring-1 ring-white/30 shadow-2xl" />
-          <div className="eyebrow mt-8 text-white/80">House of Awakenings · Bangalore</div>
-          <h1 className="mt-6 font-display text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-white">
+          <div className="eyebrow text-white/80">House of Awakenings · Bangalore</div>
+          <h1 className="mt-5 font-display text-[28px] sm:text-4xl md:text-5xl lg:text-6xl leading-[1.2] text-white">
             A sanctuary for deep inner work,<br className="hidden md:block" />
-            <span className="italic opacity-90">where you release, realign, and return to yourself.</span>
+            <span className="italic opacity-90">where you release, realign, and return.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-white/85">
+          <p className="mx-auto mt-5 max-w-2xl text-sm md:text-lg leading-relaxed text-white/85">
             Every experience is designed to restore balance and awaken your natural state of being.
           </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={scrollToMethods} className="btn-primary">
-              Begin Your Journey <ArrowRight size={18} />
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <button onClick={scrollToMethods} className="btn-primary w-full sm:w-auto">
+              Begin Your Journey <ArrowRight size={16} />
             </button>
-            <button onClick={() => navigate({ to: "/about" })} className="btn-outline border-white text-white hover:bg-white hover:text-[var(--forest)]">
+            <button onClick={() => navigate({ to: "/about" })} className="btn-outline w-full sm:w-auto border-white text-white hover:bg-white hover:text-[var(--forest)]">
               Know Our Story
             </button>
           </div>
@@ -104,13 +103,13 @@ function HomePage() {
 
       {/* WHO WE ARE */}
       <div ref={darkZoneStart} />
-      <section className="px-6 py-24 md:py-32">
+      <section className="px-5 py-16 md:py-32">
         <SectionHeading
           eyebrow="Who We Are"
           title={<>A space for inner healing<br />& transformation.</>}
           subtitle="House of Awakenings is a space where ancient practices meet modern techniques — helping individuals find balance, clarity, and peace in a fast-moving world."
         />
-        <div className="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-3">
+        <div className="mx-auto mt-10 md:mt-16 grid max-w-5xl gap-4 md:gap-6 md:grid-cols-3">
           {[
             { icon: Sparkles, title: "Ancient × Modern", text: "A thoughtful blend of timeless wisdom and contemporary methods." },
             { icon: Heart, title: "Inner Healing", text: "Designed to address body, mind, and energy as one integrated system." },
@@ -122,23 +121,23 @@ function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="rounded-2xl border border-border/50 bg-card p-8 text-center"
+              className="rounded-2xl border border-border/50 bg-card p-6 md:p-8 text-center"
             >
               <Icon className="mx-auto mb-5 text-primary" size={28} strokeWidth={1.5} />
-              <h3 className="font-display text-xl">{title}</h3>
-              <p className="mt-3 text-sm leading-relaxed opacity-75">{text}</p>
+              <h3 className="font-display text-lg md:text-xl">{title}</h3>
+              <p className="mt-2 text-[13px] md:text-sm leading-relaxed opacity-75">{text}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* WHO IS THIS FOR */}
-      <section className="px-6 py-24 md:py-32 bg-[color-mix(in_oklab,var(--cream)_60%,transparent)]">
+      <section className="px-5 py-16 md:py-32 bg-[color-mix(in_oklab,var(--cream)_60%,transparent)]">
         <SectionHeading
           eyebrow="Who Is This For"
           title="If your soul is quietly asking for more."
         />
-        <div className="mx-auto mt-14 grid max-w-4xl gap-4 md:grid-cols-3">
+        <div className="mx-auto mt-10 md:mt-14 grid max-w-4xl gap-3 md:gap-4 grid-cols-1 md:grid-cols-3">
           {[
             "People dealing with stress & anxiety",
             "Individuals seeking healing & growth",
@@ -150,23 +149,23 @@ function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="rounded-2xl border border-border/40 px-6 py-8 text-center"
+              className="rounded-2xl border border-border/40 px-5 py-6 md:py-8 text-center"
             >
-              <div className="font-display text-2xl mb-2">0{i + 1}</div>
-              <p className="text-sm opacity-80">{t}</p>
+              <div className="font-display text-xl md:text-2xl mb-1">0{i + 1}</div>
+              <p className="text-[13px] md:text-sm opacity-80">{t}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* HEALING METHODS PREVIEW */}
-      <section ref={methodsRef} className="px-6 py-24 md:py-32">
+      <section ref={methodsRef} className="px-5 py-16 md:py-32">
         <SectionHeading
           eyebrow="Healing Methods"
           title="Pathways back to wholeness."
           subtitle="Six sacred practices, each a doorway to a different layer of your being."
         />
-        <div className="mx-auto mt-16 grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto mt-10 md:mt-16 grid max-w-7xl gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {METHODS.map((m, i) => (
             <motion.div
               key={m.id}
@@ -184,13 +183,13 @@ function HomePage() {
                   loading="lazy"
                 />
               </div>
-              <div className="p-7">
-                <h3 className="font-display text-2xl">{m.name}</h3>
-                <p className="mt-3 text-sm opacity-75 leading-relaxed">{m.short}</p>
+              <div className="p-5 md:p-7">
+                <h3 className="font-display text-xl md:text-2xl">{m.name}</h3>
+                <p className="mt-2 text-[13px] md:text-sm opacity-75 leading-relaxed">{m.short}</p>
                 <Link
                   to="/healing-methods"
                   hash={m.id}
-                  className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary group/link"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary group/link"
                 >
                   Learn More
                   <ArrowRight size={16} className="transition-transform group-hover/link:translate-x-1" />
@@ -203,19 +202,19 @@ function HomePage() {
 
       {/* IMPACT TEASER -> transitions back to light */}
       <div ref={darkZoneEnd} />
-      <section className="px-6 py-28 md:py-36 text-center">
+      <section className="px-5 py-20 md:py-36 text-center">
         <motion.blockquote
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.9 }}
-          className="mx-auto max-w-3xl font-display text-2xl md:text-4xl leading-[1.3] italic"
+          transition={{ duration: 0.7 }}
+          className="mx-auto max-w-3xl font-display text-xl md:text-4xl leading-[1.35] italic px-2"
         >
           "When the body softens, the mind quiets. When the mind quiets, the soul speaks."
         </motion.blockquote>
-        <div className="mt-10">
+        <div className="mt-8 md:mt-10">
           <Link to="/about" className="btn-primary">
-            Know Our Story <ArrowRight size={18} />
+            Know Our Story <ArrowRight size={16} />
           </Link>
         </div>
       </section>

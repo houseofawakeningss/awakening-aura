@@ -32,11 +32,11 @@ function HealingMethodsPage() {
 
   return (
     <>
-      <section className="px-6 pt-36 pb-16 md:pt-44 md:pb-24 text-center">
-        <div className="eyebrow mb-4">Our Practices</div>
-        <h1 className="font-display text-4xl md:text-6xl leading-[1.1]">Healing Methods</h1>
-        <p className="mx-auto mt-6 max-w-2xl opacity-75">
-          Six sacred modalities woven together to meet you in body, mind, and spirit.
+      <section className="px-5 pt-28 pb-10 md:pt-44 md:pb-24 text-center">
+        <div className="eyebrow mb-3">Our Practices</div>
+        <h1 className="font-display text-[30px] sm:text-4xl md:text-6xl leading-[1.15]">Healing Methods</h1>
+        <p className="mx-auto mt-4 max-w-2xl text-sm md:text-base opacity-75">
+          Six sacred modalities to meet you in body, mind, and spirit.
         </p>
       </section>
 
@@ -44,31 +44,31 @@ function HealingMethodsPage() {
         <section
           id={m.id}
           key={m.id}
-          className="px-6 py-20 md:py-28 scroll-mt-24"
+          className="px-5 py-12 md:py-28 scroll-mt-20"
         >
-          <div className={`mx-auto grid max-w-7xl gap-12 md:gap-16 items-center md:grid-cols-2 ${i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}>
+          <div className={`mx-auto grid max-w-7xl gap-6 md:gap-16 items-center grid-cols-1 md:grid-cols-2 ${i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""}`}>
             <motion.div
-              initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.9 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6 }}
             >
-              <div className="overflow-hidden rounded-3xl">
-                <img src={m.image} alt={m.name} className="w-full aspect-[4/5] object-cover" loading="lazy" />
+              <div className="overflow-hidden rounded-2xl md:rounded-3xl">
+                <img src={m.image} alt={m.name} className="w-full aspect-[4/3] md:aspect-[4/5] object-cover" loading="lazy" />
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.9, delay: 0.1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <div className="eyebrow text-primary mb-3">0{i + 1} · Method</div>
-              <h2 className="font-display text-3xl md:text-5xl leading-[1.1]">{m.name}</h2>
-              <p className="mt-6 text-base md:text-lg leading-[1.85] opacity-85">{m.long}</p>
-              <Link to="/offerings" className="btn-primary mt-8">
-                Experience This <ArrowRight size={18} />
+              <div className="eyebrow text-primary mb-2">0{i + 1} · Method</div>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-5xl leading-[1.15]">{m.name}</h2>
+              <p className="mt-4 text-[14px] md:text-lg leading-[1.7] md:leading-[1.85] opacity-85">{m.long}</p>
+              <Link to="/offerings" className="btn-primary mt-6 md:mt-8">
+                Experience This <ArrowRight size={16} />
               </Link>
             </motion.div>
           </div>

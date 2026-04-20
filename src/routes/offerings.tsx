@@ -27,42 +27,42 @@ const OFFERINGS = [
 function OfferingsPage() {
   return (
     <>
-      <section className="px-6 pt-36 pb-12 md:pt-44 text-center">
-        <div className="eyebrow mb-4">Our Offerings</div>
-        <h1 className="font-display text-4xl md:text-6xl leading-[1.1]">Choose your way in.</h1>
-        <p className="mx-auto mt-6 max-w-2xl opacity-75">
-          From private one-on-one journeys to immersive retreats — each offering is held with the same intention: to bring you home to yourself.
+      <section className="px-5 pt-28 pb-8 md:pt-44 text-center">
+        <div className="eyebrow mb-3">Our Offerings</div>
+        <h1 className="font-display text-[28px] sm:text-4xl md:text-6xl leading-[1.15]">Choose your way in.</h1>
+        <p className="mx-auto mt-4 max-w-2xl text-sm md:text-base opacity-75">
+          From private one-on-one journeys to immersive retreats — each held with the same intention.
         </p>
       </section>
 
-      <section className="px-6 py-16 md:py-24">
-        <div className="mx-auto grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="px-5 py-10 md:py-24">
+        <div className="mx-auto grid max-w-7xl gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {OFFERINGS.map(({ icon: Icon, title, text }, i) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, delay: (i % 3) * 0.1 }}
-              className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card p-9 transition hover:border-primary/40 hover:shadow-[0_30px_60px_-30px_rgba(10,61,51,0.25)]"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl border border-border/50 bg-card p-6 md:p-9 transition hover:border-primary/40 hover:shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--forest)_30%,transparent)]"
             >
-              <Icon size={30} strokeWidth={1.4} className="text-primary" />
-              <h3 className="mt-6 font-display text-2xl">{title}</h3>
-              <p className="mt-4 text-sm md:text-base leading-relaxed opacity-80">{text}</p>
+              <Icon size={28} strokeWidth={1.4} className="text-primary" />
+              <h3 className="mt-4 md:mt-6 font-display text-xl md:text-2xl">{title}</h3>
+              <p className="mt-2 md:mt-4 text-[13px] md:text-base leading-relaxed opacity-80">{text}</p>
               <div className="absolute -bottom-12 -right-12 h-40 w-40 rounded-full bg-accent/10 transition group-hover:scale-150" />
             </motion.div>
           ))}
         </div>
       </section>
 
-      <section className="px-6 py-24 text-center">
+      <section className="px-5 py-16 md:py-24 text-center">
         <SectionHeading
           title="Hear from those who've walked this path."
           subtitle="Real stories of release, resilience and return."
         />
-        <div className="mt-10">
+        <div className="mt-8 md:mt-10">
           <Link to="/impact" className="btn-primary">
-            See Real Experiences <ArrowRight size={18} />
+            See Real Experiences <ArrowRight size={16} />
           </Link>
         </div>
       </section>
