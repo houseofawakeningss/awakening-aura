@@ -59,6 +59,12 @@ export default function Navbar() {
               <Link
                 key={l.to}
                 to={l.to}
+                onClick={(e) => {
+                  if (location.pathname === l.to) {
+                    e.preventDefault();
+                    window.location.reload();
+                  }
+                }}
                 className="relative text-sm tracking-wide opacity-80 transition hover:opacity-100"
                 activeProps={{ className: "opacity-100 font-medium" }}
                 activeOptions={{ exact: l.to === "/" }}
@@ -99,6 +105,13 @@ export default function Navbar() {
                 >
                   <Link
                     to={l.to}
+                    onClick={(e) => {
+                      if (location.pathname === l.to) {
+                        e.preventDefault();
+                        setOpen(false);
+                        window.location.reload();
+                      }
+                    }}
                     className="block py-3 font-display text-2xl border-b border-border/30"
                     activeProps={{ className: "text-primary" }}
                     activeOptions={{ exact: l.to === "/" }}
