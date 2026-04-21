@@ -59,7 +59,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: var(--ink);
   --primary: var(--forest);
-  --primary-foreground: var(--cream);
+  --primary-foreground: var(--ink);
   --secondary: var(--cream);
   --secondary-foreground: var(--forest);
   --muted: var(--cream);
