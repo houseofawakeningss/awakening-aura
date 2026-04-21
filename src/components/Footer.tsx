@@ -35,9 +35,9 @@ export default function Footer() {
         <div>
           <h4 className="font-display text-base mb-4">Connect</h4>
           <ul className="space-y-3 text-sm opacity-80">
-            <li className="flex items-start gap-2"><Phone size={14} className="mt-1" /> +91 91132 16212</li>
-            <li className="flex items-start gap-2"><Mail size={14} className="mt-1" /> yoga@houseofawakeningss.com</li>
-            <li className="flex items-start gap-2"><MapPin size={14} className="mt-1" /> Bangalore, India</li>
+            <li className="flex items-start gap-2"><Phone size={14} className="mt-1" /><span>+91 91132 16212</span></li>
+            <li className="flex items-start gap-2"><Mail size={14} className="mt-1" /><span>yoga@houseofawakeningss.com</span></li>
+            <li className="flex items-start gap-2"><MapPin size={14} className="mt-1" /><span>Bangalore, India</span></li>
             <li className="flex items-center gap-2 pt-2">
               <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"
                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition">
