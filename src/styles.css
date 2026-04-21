@@ -126,7 +126,7 @@
   padding: 0.8rem 1.6rem;
   font-size: 0.9rem;
   background: var(--forest);
-  color: #fff;
+  color: var(--ink);
   border-radius: 999px;
   font-weight: 500;
   letter-spacing: 0.02em;
