@@ -55,17 +55,31 @@ export default function Navbar() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
-            {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                className="relative text-sm tracking-wide opacity-80 transition hover:opacity-100"
-                activeProps={{ className: "opacity-100 font-medium" }}
-                activeOptions={{ exact: l.to === "/" }}
-              >
-                {l.label}
-              </Link>
-            ))}
+            {links.map((l) => {
+              const isActive = l.to === "/" ? location.pathname === "/" : location.pathname === l.to;
+              return (
+                <Link
+                  key={l.to}
+                  to={l.to}
+                  onClick={(e) => {
+                    if (isActive) {
+                      e.preventDefault();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      // soft refresh feel
+                      document.querySelector("main")?.classList.remove("page-in");
+                      requestAnimationFrame(() => {
+                        document.querySelector("main")?.classList.add("page-in");
+                      });
+                    }
+                  }}
+                  className="relative text-sm tracking-wide opacity-80 transition hover:opacity-100 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full"
+                  activeProps={{ className: "opacity-100 font-medium after:!w-full" }}
+                  activeOptions={{ exact: l.to === "/" }}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <button
@@ -90,23 +104,33 @@ export default function Navbar() {
             className="fixed inset-0 z-[55] lg:hidden bg-background/95 backdrop-blur-2xl"
           >
             <nav className="flex h-full flex-col justify-center px-8 gap-1 pt-16">
-              {links.map((l, i) => (
-                <motion.div
-                  key={l.to}
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.15 + i * 0.05, duration: 0.3 }}
-                >
-                  <Link
-                    to={l.to}
-                    className="block py-3 font-display text-2xl border-b border-border/30"
-                    activeProps={{ className: "text-primary" }}
-                    activeOptions={{ exact: l.to === "/" }}
+              {links.map((l, i) => {
+                const isActive = l.to === "/" ? location.pathname === "/" : location.pathname === l.to;
+                return (
+                  <motion.div
+                    key={l.to}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.15 + i * 0.05, duration: 0.3 }}
                   >
-                    {l.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      to={l.to}
+                      onClick={(e) => {
+                        if (isActive) {
+                          e.preventDefault();
+                          setOpen(false);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }
+                      }}
+                      className="block py-3 font-display text-2xl border-b border-border/30"
+                      activeProps={{ className: "text-primary" }}
+                      activeOptions={{ exact: l.to === "/" }}
+                    >
+                      {l.label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </nav>
           </motion.div>
         )}
