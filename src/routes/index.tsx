@@ -57,7 +57,7 @@ function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: "calc(100vh - var(--nav-h))" }}>
         <motion.div
           className="absolute inset-0"
           initial={{ scale: 1.15 }}
@@ -169,30 +169,37 @@ function HomePage() {
           {METHODS.map((m, i) => (
             <motion.div
               key={m.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, delay: (i % 3) * 0.1 }}
-              className="group overflow-hidden rounded-2xl border border-border/50 bg-card"
+              initial={{ opacity: 0, y: 40, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: (i % 3) * 0.12, ease: [0.2, 0.8, 0.2, 1] }}
+              className="method-card group relative overflow-hidden rounded-3xl border border-border/50 bg-card"
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-t-3xl">
                 <img
                   src={m.image}
                   alt={m.name}
-                  className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                  className="card-img h-full w-full object-cover"
                   loading="lazy"
                 />
+                <span className="shine" />
+                <div className="absolute top-3 left-3 rounded-full bg-background/85 backdrop-blur px-3 py-1 text-[10px] tracking-[0.2em] uppercase text-foreground/80">
+                  0{i + 1}
+                </div>
               </div>
-              <div className="p-5 md:p-7">
-                <h3 className="font-display text-xl md:text-2xl">{m.name}</h3>
+              <div className="relative p-5 md:p-7">
+                <h3 className="font-display text-xl md:text-2xl group-hover:text-primary transition-colors">{m.name}</h3>
                 <p className="mt-2 text-[13px] md:text-sm opacity-75 leading-relaxed">{m.short}</p>
                 <Link
                   to="/healing-methods"
                   hash={m.id}
                   className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary group/link"
                 >
-                  Learn More
-                  <ArrowRight size={16} className="transition-transform group-hover/link:translate-x-1" />
+                  <span className="relative">
+                    Learn More
+                    <span className="absolute left-0 -bottom-0.5 h-[1.5px] w-0 bg-primary transition-all duration-500 group-hover/link:w-full" />
+                  </span>
+                  <ArrowRight size={16} className="transition-transform duration-300 group-hover/link:translate-x-1.5" />
                 </Link>
               </div>
             </motion.div>

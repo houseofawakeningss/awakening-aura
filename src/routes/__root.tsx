@@ -62,12 +62,16 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function ScrollToTop() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   useEffect(() => {
-    // Always start each route at the top — but allow hash anchors
     if (typeof window !== "undefined" && !window.location.hash) {
       window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
     }
-    // Reset theme to light on route change; Home page can opt back into dark via scroll
     document.body.classList.remove("theme-dark");
+    const main = document.querySelector("main");
+    if (main) {
+      main.classList.remove("page-in");
+      void (main as HTMLElement).offsetWidth;
+      main.classList.add("page-in");
+    }
   }, [pathname]);
   return null;
 }
@@ -78,7 +82,7 @@ function RootComponent() {
       <Preloader />
       <ScrollToTop />
       <Navbar />
-      <main className="min-h-screen pt-0">
+      <main className="min-h-screen page-in">
         <Outlet />
       </main>
       <Footer />
