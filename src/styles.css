@@ -39,8 +39,8 @@
   --color-ink: var(--ink);
   --color-gold: var(--gold);
   --color-teal: var(--teal);
-  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
-  --font-sans: "Inter", "DM Sans", system-ui, sans-serif;
+  --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
 }
 
 /* ============================================================
@@ -114,15 +114,18 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
-    transition: background-color 1.2s cubic-bezier(.4,0,.2,1), color 1.2s cubic-bezier(.4,0,.2,1);
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
     font-weight: 500;
-    letter-spacing: -0.015em;
-    line-height: 1.15;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-variation-settings: "opsz" 144;
+    color: var(--foreground);
   }
 
   ::selection { background: var(--gold); color: var(--ink); }
@@ -386,7 +389,7 @@ html { scroll-behavior: smooth; }
   color: color-mix(in oklab, var(--gold) 80%, transparent);
 }
 
-/* Aurora background blobs */
+/* Aurora background blobs — lighter blur for perf */
 .aurora-bg {
   position: absolute; inset: 0;
   overflow: hidden;
@@ -396,21 +399,80 @@ html { scroll-behavior: smooth; }
 .aurora-bg::before, .aurora-bg::after {
   content: "";
   position: absolute;
-  width: 60vw; height: 60vw;
+  width: 50vw; height: 50vw;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.35;
+  filter: blur(60px);
+  opacity: 0.28;
+  will-change: transform;
 }
 .aurora-bg::before {
   top: -20%; left: -15%;
-  background: radial-gradient(circle, var(--forest), transparent 60%);
-  animation: aurora-shift 16s ease-in-out infinite;
+  background: radial-gradient(circle, var(--forest), transparent 65%);
+  animation: aurora-shift 18s ease-in-out infinite;
 }
 .aurora-bg::after {
   bottom: -25%; right: -15%;
-  background: radial-gradient(circle, var(--gold), transparent 60%);
-  animation: aurora-shift 20s ease-in-out infinite reverse;
+  background: radial-gradient(circle, var(--gold), transparent 65%);
+  animation: aurora-shift 22s ease-in-out infinite reverse;
 }
+
+/* Subtle textured paper background for sections */
+.bg-paper {
+  background:
+    radial-gradient(ellipse at top, color-mix(in oklab, var(--gold) 6%, transparent), transparent 60%),
+    color-mix(in oklab, var(--cream) 50%, var(--background));
+}
+
+/* Hairline ornament */
+.ornament {
+  display: inline-flex; align-items: center; gap: .8rem;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+}
+.ornament::before, .ornament::after {
+  content: "";
+  width: 60px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Number marker (gold ring) */
+.num-ring {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in oklab, var(--gold) 50%, transparent);
+  background: radial-gradient(circle, color-mix(in oklab, var(--gold) 8%, transparent), transparent 70%);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--gold);
+}
+
+/* Soft luxe card */
+.card-luxe {
+  position: relative;
+  background: var(--card);
+  border: 1px solid color-mix(in oklab, var(--gold) 14%, var(--border));
+  border-radius: 1.25rem;
+  transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s, border-color .4s;
+}
+.card-luxe:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in oklab, var(--gold) 50%, transparent);
+  box-shadow:
+    0 24px 50px -22px color-mix(in oklab, var(--ink) 30%, transparent),
+    0 0 40px -16px color-mix(in oklab, var(--gold) 30%, transparent);
+}
+.card-luxe::before {
+  content: "";
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transition: width .6s ease;
+}
+.card-luxe:hover::before { width: 70%; }
 
 /* Soft section divider */
 .divider-glow {

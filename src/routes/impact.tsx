@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Quote } from "lucide-react";
 import SectionHeading from "../components/SectionHeading";
+import PageHero from "../components/PageHero";
+import Mandala from "../components/Mandala";
 
 export const Route = createFileRoute("/impact")({
   head: () => ({
@@ -27,65 +29,79 @@ const TESTIMONIALS = [
 function ImpactPage() {
   return (
     <>
-      <section className="px-5 pt-28 pb-8 md:pt-44 text-center">
-        <div className="eyebrow mb-3">Impact</div>
-        <h1 className="font-display text-[28px] sm:text-4xl md:text-6xl">Stories of becoming.</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-sm md:text-base opacity-75">
-          Quiet revolutions, lived in real bodies and real lives.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="Impact"
+        title={<>Stories of <span className="italic text-gold">becoming</span></>}
+        subtitle="Quiet revolutions, lived in real bodies and real lives."
+        ornament="॥ अनुभव ॥"
+      />
 
-      <section className="px-5 py-10 md:py-16">
-        <div className="mx-auto grid max-w-7xl gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <section className="px-5 py-12 md:py-20">
+        <div className="mx-auto grid max-w-7xl gap-5 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {TESTIMONIALS.map((t, i) => (
             <motion.figure
               key={t.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-              className="rounded-2xl md:rounded-3xl border border-border/50 bg-card p-6 md:p-8"
+              transition={{ duration: 0.6, delay: (i % 3) * 0.08 }}
+              className="card-luxe p-7 md:p-9 group"
             >
-              <Quote size={24} className="text-primary opacity-60" />
-              <blockquote className="mt-3 text-[14px] md:text-base leading-relaxed opacity-90">"{t.text}"</blockquote>
-              <figcaption className="mt-5 pt-4 border-t border-border/40">
-                <div className="font-display text-base md:text-lg">{t.name}</div>
-                <div className="text-[10px] md:text-xs uppercase tracking-[0.25em] opacity-60 mt-1">{t.role}</div>
+              <Quote size={24} className="text-gold opacity-70" />
+              <blockquote className="mt-4 text-[14.5px] md:text-[15.5px] leading-[1.8] opacity-90 font-light italic">
+                "{t.text}"
+              </blockquote>
+              <figcaption className="mt-6 pt-5 border-t border-[color-mix(in_oklab,var(--gold)_18%,var(--border))]">
+                <div className="font-display text-lg md:text-xl font-medium">{t.name}</div>
+                <div className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-gold mt-1.5">{t.role}</div>
               </figcaption>
             </motion.figure>
           ))}
         </div>
       </section>
 
-      <section className="px-5 py-16 md:py-32 bg-[color-mix(in_oklab,var(--cream)_60%,transparent)]">
-        <SectionHeading eyebrow="Video Testimonials" title="Hear it in their own voices." />
-        <div className="mx-auto mt-8 md:mt-12 grid max-w-6xl gap-4 md:gap-6 grid-cols-1 md:grid-cols-2">
-          {[1, 2].map((n) => (
-            <motion.div
-              key={n}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="aspect-video rounded-2xl md:rounded-3xl overflow-hidden bg-black/5 border border-border/40 flex items-center justify-center"
-            >
-              <div className="text-center opacity-60">
-                <div className="mx-auto h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+      <section className="relative px-5 py-24 md:py-32 overflow-hidden bg-paper">
+        <div className="aurora-bg opacity-50" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none">
+          <Mandala size={620} />
+        </div>
+        <div className="relative">
+          <SectionHeading
+            eyebrow="Video Testimonials"
+            title={<>Hear it in their <span className="italic text-gold">own voices</span></>}
+          />
+          <div className="mx-auto mt-12 grid max-w-6xl gap-5 md:gap-6 grid-cols-1 md:grid-cols-2">
+            {[1, 2].map((n) => (
+              <motion.div
+                key={n}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: n * 0.1 }}
+                className="card-luxe aspect-video flex items-center justify-center group cursor-pointer"
+              >
+                <div className="text-center">
+                  <div className="mx-auto h-16 w-16 rounded-full border border-[color-mix(in_oklab,var(--gold)_50%,transparent)] bg-[color-mix(in_oklab,var(--gold)_8%,transparent)] flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:border-[var(--gold)]">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="text-gold ml-1">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                  <div className="mt-4 text-[12px] md:text-sm uppercase tracking-[0.25em] opacity-70">Testimonial {n}</div>
                 </div>
-                <div className="mt-2 text-xs md:text-sm">Video testimonial {n}</div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="px-5 py-16 md:py-24 text-center">
-        <SectionHeading title="Beyond words — feel the space." />
-        <div className="mt-8 md:mt-10">
-          <Link to="/moments" className="btn-primary">
-            Feel the Experience <ArrowRight size={16} />
-          </Link>
+      <section className="relative px-5 py-24 md:py-32 text-center overflow-hidden">
+        <div className="relative">
+          <SectionHeading title={<>Beyond words — feel the <span className="italic text-gold">space</span></>} />
+          <div className="mt-10">
+            <Link to="/moments" className="btn-primary">
+              Feel the Experience <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
     </>
