@@ -45,9 +45,9 @@
 :root {
   --radius: 0.5rem;
 
-  /* Brand — vibrant eco green */
-  --forest: #53ec6a;   /* primary vibrant green */
-  --sage: #7ff093;     /* lighter accent green */
+  /* Brand — fresh eco green */
+  --forest: oklch(0.52 0.09 158);   /* #2E7D5B fresh primary green */
+  --sage: oklch(0.78 0.08 158);     /* #6FBF9F bright accent green */
   --cream: oklch(0.97 0.012 85);    /* #F8F4ED warm off-white */
   --ink: oklch(0.18 0.005 240);     /* deep black */
   --charcoal: oklch(0.36 0.008 240); /* soft charcoal */
@@ -59,7 +59,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: var(--ink);
   --primary: var(--forest);
-  --primary-foreground: var(--ink);
+  --primary-foreground: var(--cream);
   --secondary: var(--cream);
   --secondary-foreground: var(--forest);
   --muted: var(--cream);
@@ -126,7 +126,7 @@
   padding: 0.8rem 1.6rem;
   font-size: 0.9rem;
   background: var(--forest);
-  color: var(--ink);
+  color: #fff;
   border-radius: 999px;
   font-weight: 500;
   letter-spacing: 0.02em;

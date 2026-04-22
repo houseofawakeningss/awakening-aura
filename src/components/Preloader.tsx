@@ -4,25 +4,19 @@ import { motion, AnimatePresence } from "framer-motion";
 const LOGO = "https://files.catbox.moe/5j42wr.webp";
 
 export default function Preloader() {
-  // Only show preloader on first visit per session
-  const [done, setDone] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return sessionStorage.getItem("hoa_preloaded") === "1";
-  });
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (done) return;
     document.body.classList.add("no-scroll");
     const t = setTimeout(() => {
       setDone(true);
-      sessionStorage.setItem("hoa_preloaded", "1");
       document.body.classList.remove("no-scroll");
-    }, 2200);
+    }, 2600);
     return () => {
       clearTimeout(t);
       document.body.classList.remove("no-scroll");
     };
-  }, [done]);
+  }, []);
 
   return (
     <AnimatePresence>

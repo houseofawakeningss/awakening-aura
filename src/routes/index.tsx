@@ -57,7 +57,7 @@ function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[calc(100vh-72px)] mt-[72px] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <motion.div
           className="absolute inset-0"
           initial={{ scale: 1.15 }}
@@ -169,27 +169,22 @@ function HomePage() {
           {METHODS.map((m, i) => (
             <motion.div
               key={m.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, delay: (i % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -8 }}
-              className="group relative overflow-hidden rounded-3xl border border-border/40 bg-card shadow-[0_4px_20px_-8px_rgba(0,0,0,0.08)] hover:shadow-[0_24px_48px_-16px_color-mix(in_oklab,var(--forest)_35%,transparent)] transition-shadow duration-500"
+              transition={{ duration: 0.7, delay: (i % 3) * 0.1 }}
+              className="group overflow-hidden rounded-2xl border border-border/50 bg-card"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
                   src={m.image}
                   alt={m.name}
-                  className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.08]"
+                  className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-                <div className="absolute top-4 left-4 rounded-full bg-background/90 backdrop-blur px-3 py-1 text-[11px] font-medium tracking-wider uppercase opacity-0 group-hover:opacity-100 translate-y-[-6px] group-hover:translate-y-0 transition-all duration-500">
-                  0{i + 1}
-                </div>
               </div>
               <div className="p-5 md:p-7">
-                <h3 className="font-display text-xl md:text-2xl group-hover:text-primary transition-colors duration-300">{m.name}</h3>
+                <h3 className="font-display text-xl md:text-2xl">{m.name}</h3>
                 <p className="mt-2 text-[13px] md:text-sm opacity-75 leading-relaxed">{m.short}</p>
                 <Link
                   to="/healing-methods"
@@ -197,7 +192,7 @@ function HomePage() {
                   className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary group/link"
                 >
                   Learn More
-                  <ArrowRight size={16} className="transition-transform duration-300 group-hover/link:translate-x-1.5" />
+                  <ArrowRight size={16} className="transition-transform group-hover/link:translate-x-1" />
                 </Link>
               </div>
             </motion.div>
