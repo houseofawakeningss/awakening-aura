@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, User, Users, Sparkles, Building2, Landmark, Mountain } from "lucide-react";
 import SectionHeading from "../components/SectionHeading";
+import PageHero from "../components/PageHero";
+import Mandala from "../components/Mandala";
 
 export const Route = createFileRoute("/offerings")({
   head: () => ({
@@ -16,54 +18,70 @@ export const Route = createFileRoute("/offerings")({
 });
 
 const OFFERINGS = [
-  { icon: User, title: "1:1 Sessions", text: "Deeply personalized journeys held in a private, sacred container — for those who want focused transformation." },
-  { icon: Users, title: "Group Classes", text: "Weekly yoga, breathwork, and meditation in a community of like-minded seekers." },
-  { icon: Sparkles, title: "Workshops & Immersions", text: "Half-day and full-day deep dives into specific modalities and themes." },
-  { icon: Building2, title: "Corporate Wellness", text: "Curated programs that bring resilience, clarity, and presence into your workplace." },
-  { icon: Landmark, title: "Government & Institutional", text: "Tailored programs for institutions ready to embed wellbeing into their culture." },
-  { icon: Mountain, title: "Retreats & Events", text: "Multi-day getaways in nature — designed to reset, restore, and remember." },
+  { icon: User, title: "1:1 Sessions", text: "Deeply personalized journeys held in a private, sacred container.", symbol: "✦" },
+  { icon: Users, title: "Group Classes", text: "Weekly yoga, breathwork, and meditation in shared community.", symbol: "❋" },
+  { icon: Sparkles, title: "Workshops", text: "Half-day & full-day deep dives into specific modalities.", symbol: "✸" },
+  { icon: Building2, title: "Corporate Wellness", text: "Programs that bring resilience and presence into workplaces.", symbol: "❉" },
+  { icon: Landmark, title: "Institutional", text: "Tailored programs for organizations embedding wellbeing.", symbol: "᳚" },
+  { icon: Mountain, title: "Retreats", text: "Multi-day getaways in nature — to reset, restore, remember.", symbol: "↟" },
 ];
 
 function OfferingsPage() {
   return (
     <>
-      <section className="px-5 pt-28 pb-8 md:pt-44 text-center">
-        <div className="eyebrow mb-3">Our Offerings</div>
-        <h1 className="font-display text-[28px] sm:text-4xl md:text-6xl leading-[1.15]">Choose your way in.</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-sm md:text-base opacity-75">
-          From private one-on-one journeys to immersive retreats — each held with the same intention.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="Our Offerings"
+        title={<>Choose your <span className="italic text-gold">way in</span></>}
+        subtitle="From private one-on-one journeys to immersive retreats — each held with the same intention."
+        ornament="✦ ॐ ✦"
+      />
 
-      <section className="px-5 py-10 md:py-24">
-        <div className="mx-auto grid max-w-7xl gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {OFFERINGS.map(({ icon: Icon, title, text }, i) => (
+      <section className="relative px-5 py-16 md:py-24 overflow-hidden bg-paper">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none">
+          <Mandala size={760} />
+        </div>
+        <div className="relative mx-auto grid max-w-7xl gap-5 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {OFFERINGS.map(({ icon: Icon, title, text, symbol }, i) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-              className="group relative overflow-hidden rounded-2xl md:rounded-3xl border border-border/50 bg-card p-6 md:p-9 transition hover:border-primary/40 hover:shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--forest)_30%,transparent)]"
+              transition={{ duration: 0.6, delay: (i % 3) * 0.08 }}
+              className="card-luxe group p-8 md:p-10 overflow-hidden"
             >
-              <Icon size={28} strokeWidth={1.4} className="text-primary" />
-              <h3 className="mt-4 md:mt-6 font-display text-xl md:text-2xl">{title}</h3>
-              <p className="mt-2 md:mt-4 text-[13px] md:text-base leading-relaxed opacity-80">{text}</p>
-              <div className="absolute -bottom-12 -right-12 h-40 w-40 rounded-full bg-accent/10 transition group-hover:scale-150" />
+              <div className="absolute -bottom-16 -right-16 opacity-[0.05] group-hover:opacity-[0.12] transition-opacity duration-700 pointer-events-none">
+                <Mandala size={220} />
+              </div>
+              <div className="relative">
+                <div className="flex items-center justify-between">
+                  <span className="font-display italic text-gold text-sm tracking-[0.2em]">0{i + 1}</span>
+                  <span className="sanskrit text-xl opacity-70">{symbol}</span>
+                </div>
+                <div className="mt-6 inline-flex h-14 w-14 items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--gold)_45%,transparent)] bg-[color-mix(in_oklab,var(--gold)_8%,transparent)] transition-colors duration-500 group-hover:border-[var(--gold)]">
+                  <Icon size={22} strokeWidth={1.3} className="text-gold" />
+                </div>
+                <h3 className="mt-6 font-display text-[22px] md:text-[26px] font-medium leading-tight">{title}</h3>
+                <div className="divider-glow w-10 my-3" />
+                <p className="text-[14px] leading-[1.75] opacity-75 font-light">{text}</p>
+              </div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      <section className="px-5 py-16 md:py-24 text-center">
-        <SectionHeading
-          title="Hear from those who've walked this path."
-          subtitle="Real stories of release, resilience and return."
-        />
-        <div className="mt-8 md:mt-10">
-          <Link to="/impact" className="btn-primary">
-            See Real Experiences <ArrowRight size={16} />
-          </Link>
+      <section className="relative px-5 py-24 md:py-32 text-center overflow-hidden">
+        <div className="aurora-bg opacity-40" />
+        <div className="relative">
+          <SectionHeading
+            title={<>Hear from those who've <span className="italic text-gold">walked this path</span></>}
+            subtitle="Real stories of release, resilience and return."
+          />
+          <div className="mt-10">
+            <Link to="/impact" className="btn-primary">
+              See Real Experiences <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
     </>
